@@ -9,6 +9,6 @@ public class SantaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SantaApplication.class, args);
 		
-		System.out.println("third");
+		System.out.println("4");
 	}
 }
