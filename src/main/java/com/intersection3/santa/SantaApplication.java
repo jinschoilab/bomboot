@@ -20,7 +20,7 @@ public class SantaApplication {
 	public String greet() {
 		log.info("Access /greeting");
 
-		List<String> greetings = Arrays.asList("Hi", "Hello", "Hallo", "Salut", "Greetings");
+		List<String> greetings = Arrays.asList("Hi", "Hello", "Hallo", "Konnichiha", "Salut", "Greetings");
 		Random rand = new Random();
 
 		int randomNum = rand.nextInt(greetings.size());
@@ -29,6 +29,6 @@ public class SantaApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SantaApplication.class, args);
-		System.out.println("18");
+		System.out.println("19");
 	}
 }
