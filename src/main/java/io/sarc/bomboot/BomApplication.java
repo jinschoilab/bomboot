@@ -1,12 +1,13 @@
-package com.intersection3.santa;
+package io.sarc.bomboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SantaApplication {	
+public class BomApplication {	
 	public static void main(String[] args) {
-		SpringApplication.run(SantaApplication.class, args);
-		System.out.println(20);
+		SpringApplication.run(BomApplication.class, args);
+
+		System.out.println("BomApplication");
 	}
 }

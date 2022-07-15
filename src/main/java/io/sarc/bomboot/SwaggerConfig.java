@@ -1,4 +1,4 @@
-package com.intersection3.santa;
+package io.sarc.bomboot;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
