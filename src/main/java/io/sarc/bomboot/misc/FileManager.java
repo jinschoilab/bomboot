@@ -15,28 +15,39 @@ import io.sarc.bomboot.util.RandomUtil;
 
 public class FileManager {
 	private static Logger log = LoggerFactory.getLogger(FileManager.class);
+
+	private String ext = ".dat";
 	
-	public static long create(String fileName, String value) {
-		File file = new File(fileName);
+	public long file(String fileName, String value) {
+		File file = create(fileName);
+		
+		long bytes = write(file, fileName, value);
+		
+		return bytes;
+	}
+	
+	private File create(String fullFileName) {		
+		File file = new File(fullFileName);
+		
+		log.debug(fullFileName + " exists : " + file.exists());
 
-		boolean fileExist = file.exists();
-
-		if (fileExist) {
-			log.info(fileName + " exists : " + fileExist);
-		} else {
-			log.info(fileName + " not exists");
-			
-			try {
-				file.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
-		long bytes = 0;
-
+		
+		log.debug(fullFileName + " exists : " + file.exists());
+		
+		return file;
+	}
+	
+	private long write(File file, String fileName, String value) {
+		String fullFileName = fileName + ext;
+			
+		long bytes = 0L;
 		int fc = RandomUtil.getRandomNumber(10);
-				
+		
 		for (int i = 0; i < fc; i++) {
 			try (FileWriter fileWriter = new FileWriter(file)) {
 				PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -62,6 +73,8 @@ public class FileManager {
 				e.printStackTrace();
 			}
 		}
+		
+		log.debug(fullFileName + " exists : " + file.exists());
 		
 		return bytes;
 	}
