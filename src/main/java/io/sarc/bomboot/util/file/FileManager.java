@@ -1,4 +1,4 @@
-package io.sarc.bomboot.misc;
+package io.sarc.bomboot.util.file;
 
 import java.io.File;
 import java.io.FileWriter;

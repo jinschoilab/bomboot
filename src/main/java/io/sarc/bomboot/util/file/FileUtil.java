@@ -1,4 +1,4 @@
-package io.sarc.bomboot.util;
+package io.sarc.bomboot.util.file;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -89,5 +89,34 @@ public class FileUtil {
 		}
 
 		return r;
+	}
+	
+	public static boolean isDirectory(String s) {
+		File f = new File(s);
+
+		if (f.exists() && f.isDirectory()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	
+	public static InputStream close(InputStream is) {
+		try {
+			if ( is != null )
+				is.close();
+		} catch ( Throwable e ) {
+		}
+		return null;
+	}
+
+	public static FileInputStream close(FileInputStream fis) {
+		try {
+			if ( fis != null )
+				fis.close();
+		} catch ( Throwable e ) {
+		}
+		return null;
 	}
 }
