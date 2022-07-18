@@ -1,7 +1,5 @@
 package io.sarc.bomboot.util;
 
-import io.sarc.sarcutil.ListStack.Node;
-
 public class ListStack {
 	private Node top;
 	private int size = 0;
