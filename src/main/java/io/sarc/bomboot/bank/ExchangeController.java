@@ -39,11 +39,20 @@ public class ExchangeController {
 		log.info("Access " + api);
 		log.info(startup_complete_code);
 		
-		String result = UrlConnection.getHttpConnectionResult(exchangeApiPrefix + from.toUpperCase() + to.toUpperCase());
+		Float result = 0F;
 		
+		if ( ExchangeData.needUpdate(to.toUpperCase()) )  {
+			String str = UrlConnection.getHttpConnectionResult(exchangeApiPrefix + from.toUpperCase() + to.toUpperCase());
+			result = basePrice(str);
+			update(to.toUpperCase(), result);
+			ExchangeData.print();
+		} else {
+			result = ExchangeData.get(to.toUpperCase());
+		}
+				
 		span.finish();
 
-		return result;
+		return result + "";
 	}
 	
 	public float basePrice(String jsonString) {
@@ -58,5 +67,11 @@ public class ExchangeController {
 			basePrice = jsonobject.getFloat("basePrice");
 		}
 		return basePrice;		
+	}
+	
+	public void update(String key, float rate) {
+		System.out.println("ExchangeData.update=" + key + " - " + rate);
+		ExchangeData.RATE_DATA.put(key, rate);
+		ExchangeData.RATE_LAST_TIMPSTAMP.put(key, System.currentTimeMillis());
 	}
 }
